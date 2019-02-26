@@ -85,5 +85,3 @@ function keyPressed(){
   if(keyCode == 65){
     console.log("the keyCode is a");
   }
-
-}

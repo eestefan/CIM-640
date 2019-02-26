@@ -10,18 +10,24 @@ var arcX = 250;
 var arcY = 275;
 var arcX2 = 550;
 var arcWH = 200;
+var ballPosX = 0;
+var ballPosY = 0;
+
+var instruction = "SCROLL RIGHT!";
+var instructionTwo = "SCROLL IT BACK!"
+
 
 
 function setup() {
   // put setup code here
   createCanvas (800,800);
-  background(backgroundColor);
 
 }
 
 function draw() {
     // put drawing code here
 
+    background(backgroundColor);
 
     fill(r);
     strokeWeight(2);
@@ -94,8 +100,15 @@ function draw() {
     strokeWeight(3);
     //horizontal yellow line
     line(0,375,800,375);
+    noStroke();
+    fill(y);
+    textSize(21);
+    text(instruction,20,400);
+    fill(236,0,140);
+    text(instructionTwo,605,400)
 
     //diagonal yellow line left to right
+    stroke(y);
     line(268,0,605,800);
 
     //diagonal yellow line right to left
@@ -124,23 +137,37 @@ function draw() {
     arc(arcX -100,arcY -100,arcWH,arcWH,150,300);
     arc(arcX2 +100,arcY -100,arcWH,arcWH,230,30);
 
-    
+    fill(y);
+    ballPosX = mouseX;
+    eballPosY = mouseY;
+    ellipse(mouseX,mouseY,48,48);
 
+    if(mouseX > width/2){
+      //run this code
+      console.log("To the Right of the Pink Triangle");
+      //ball turns pink moving to the right and crosses the pink triangle
+      fill(236,0,140);
+      stroke(236,0,140);
+      ellipse(mouseX,mouseY,48,48);
+    }
 
+    if(mouseX < width/2){
+      //run this code
+      console.log("To the Left of the Pink Triangle");
+      //ball turns pink moving to the right and crosses the pink triangle
+      fill(y);
+      stroke(y);
+      ellipse(mouseX,mouseY,48,48);
+    }
 
+}
 
+//end of draw loop
 
+function mousePressed(){
+  backgroundColor = "yellow";
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+function mouseReleased(){
+  backgroundColor = "indigo";
 }
