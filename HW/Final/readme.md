@@ -2,7 +2,7 @@
 
 The Sounds Around Me
 
-My project, The Sounds Around Me, is an educational flipbook for small children ages 3-5. It includes animal drawings with sounds to help children experience and learn animals and their sounds in the child's surrounding and outside environment. Ideally this would be a tablet and mobile app for easy access.
+My project, The Sounds Around Me, is an educational flipbook for small children ages 3-5. It includes animal drawings with sounds to help children experience and learn animals and their sounds in the child's surrounding and outside environment. Ideally this would be a tablet and mobile app for easy accessibility.
 
 All illustrations are drawn by me, Elizabeth Estefan.
 
