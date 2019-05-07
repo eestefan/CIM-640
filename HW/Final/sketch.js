@@ -17,7 +17,7 @@ var button;
 var storybookArray = [];
 var page0,page1,page2;//page3,page4,page5,page6;
 
-var storyText = ["The Sounds Around Me","OH NO! The sounds are all mixed up!","The Sounds in My Yard","The Sounds on the Farm","The Sounds on the Pond","Until the Next Sound..."];
+var storyText = ["The Sounds Around Me","OH NO! The sounds are all mixed up!","The Sounds in My Yard","The Sounds on the Farm","The Sounds by the Pond","Until the Next Sound..."];
 
 var currentPage = 0;
 var currentImage = 0;
@@ -107,7 +107,7 @@ function preload(){
   pigOverlay = loadImage("assets/oink-overlay.png")
   cowOverlay = loadImage("assets/moo-overlay.png")
   chickenOverlay = loadImage("assets/cluck-overlay.png")
-  frogOverlay = loadImage("assets/rabbit-overlay.png")
+  frogOverlay = loadImage("assets/ribbit-overlay.png")
   grasshopperOverlay = loadImage("assets/chirp-overlay.png")
 
 
@@ -246,11 +246,11 @@ button4.mousePressed(function(){
     chickenButton.hide();
 
 pigInterface = new interfaces(pigHitZoneX,pigHitZoneY,pigHitZoneSize,pigHitZoneSize+80,"pig",homeSounds[4]);
-cowInterface = new interfaces(cowHitZoneX,cowHitZoneY,cowHitZoneSize,cowHitZoneSize+80, "cow",homeSounds[5]);
-chickenInterface = new interfaces(chickenHitZoneX,chickenHitZoneY,chickenHitZoneSize,chickenHitZoneSize+50,"chicken",homeSounds[3]);
+cowInterface = new interfaces(cowHitZoneX-80,cowHitZoneY-80,cowHitZoneSize+20,cowHitZoneSize+120, "cow",homeSounds[5]);
+chickenInterface = new interfaces(chickenHitZoneX-40,chickenHitZoneY-40,chickenHitZoneSize+20,chickenHitZoneSize+50,"chicken",homeSounds[3]);
 
 
-button5 = createButton("On the Pond");
+button5 = createButton("By the Pond");
 button5.position(435,500);
 button5.mousePressed(function(){
   currentPage = 4;
@@ -265,7 +265,7 @@ button5.mousePressed(function(){
     //this next code (mousePressed) is going to create the action
     frogButton.mousePressed(function(){
       frogSound.play();
-      frogSound = "frog";
+      currentSound = "frog";
     });
 
     grasshopperButton = createButton("Chirp");
@@ -299,6 +299,8 @@ button6.mousePressed(function(){
   //currentPage = 5;
 //});
 
+//dolphinButton.hide();
+//whaleButton.hide();
 
 //dolphinInterface = new interfaces(dolphinHitZoneX,dolphinHitZoneY,dolphinHitZoneSize,dolphinHitZoneSize+50,"dolphin",homeSounds[9]);
 //whaleInterface = new interfaces(whaleHitZoneX,whaleHitZoneY,whaleHitZoneSize,whaleHitZoneSize+50,"whale",homeSounds[8]);
@@ -339,6 +341,8 @@ function draw() {
     text("4. You will know it is correct when ",25,180);
     text("the sound appears.",50,210);
 
+    //pigInterface.display();
+
     fill("black");
     textSize (32);
     text("CHOOSE",750,290);
@@ -351,6 +355,8 @@ function draw() {
     chickenButton.show();
     frogButton.hide();
     grasshopperButton.show();
+
+
 
   //Yard page
   }else if(currentPage == 2){
@@ -373,6 +379,14 @@ function draw() {
     textSize (32);
     text("CHOOSE",750,290);
 
+    fill("red");
+    stroke("red");
+    strokeWeight("1");
+    textSize (28);
+    text("CAT",187,150);
+    text("DOG",500,150);
+    text("BIRD",850,190);
+
     dogButton.show();
     catButton.show();
     birdButton.show();
@@ -389,6 +403,11 @@ function draw() {
     text(storyText[3],25,60);
     noStroke();
 
+    //rect(cowHitZoneX-80,cowHitZoneY-80,cowHitZoneSize+20,cowHitZoneSize+130);
+    //rect(pigHitZoneX,pigHitZoneY,pigHitZoneSize,pigHitZoneSize+80);
+    //rect(chickenHitZoneX-40,chickenHitZoneY-40,chickenHitZoneSize+20,chickenHitZoneSize+50);
+
+
     pigInterface.display();
     cowInterface.display();
     chickenInterface.display();
@@ -396,6 +415,14 @@ function draw() {
     fill("black");
     textSize (32);
     text("CHOOSE",750,290);
+
+    fill("red");
+    stroke("red");
+    strokeWeight("1");
+    textSize (28);
+    text("COW",210,150);
+    text("PIG",465,190);
+    text("CHICKEN",790,180);
 
     dogButton.hide();
     catButton.hide();
@@ -413,12 +440,21 @@ function draw() {
     text(storyText[4],25,60);
     noStroke();
 
+    //rect(frogHitZoneX,frogHitZoneY,frogHitZoneSize,frogHitZoneSize+80);
+    //rect(grasshopperHitZoneX,grasshopperHitZoneY,grasshopperHitZoneSize,grasshopperHitZoneSize+80);
+
     frogInterface.display();
     grasshopperInterface.display();
 
     fill("black");
     textSize (32);
     text("CHOOSE",750,290);
+    fill("red");
+    stroke("red");
+    strokeWeight("1");
+    textSize (28);
+    text("FROG",200,230);
+    text("GRASSHOPPER",405,230);
 
     dogButton.hide();
     catButton.hide();
@@ -478,13 +514,13 @@ function mousePressed(){
   // }
 
 
-  if(dogInterface.check() == true){
-    if(dogInterface.type == currentSound){
-      dogInterface.S0 = homeSounds[1];
-    }
-  }else if(catInterface.check() == true){
+  if(catInterface.check() == true){
     if(catInterface.type == currentSound){
       catInterface.S0 = homeSounds[0];
+    }
+  }else if(dogInterface.check() == true){
+    if(dogInterface.type == currentSound){
+      dogInterface.S0 = homeSounds[1];
     }
   }else if(birdInterface.check() == true){
     if(birdInterface.type == currentSound){
