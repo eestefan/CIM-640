@@ -478,9 +478,6 @@ function draw() {
     //rect(dogHitZoneX,dogHitZoneY,dogHitZoneSize,dogHitZoneSize+80);
     //rect(birdHitZoneX,birdHitZoneY,birdHitZoneSize,birdHitZoneSize+50);
 
-    frogInterface.display();
-    grasshopperInterface.display();
-
     dogButton.hide();
     catButton.hide();
     birdButton.hide();
@@ -513,45 +510,67 @@ function mousePressed(){
   //   birdSound.play();
   // }
 
+ if(currentPage == 1){
+  if(pigInterface.check() == true){
+      if(pigInterface.type == currentSound){
+        pigInterface.S0 = homeSounds[3];
+      }
+      pigInterface.S0.play();
+}
+  }else if(currentPage == 2){
+    if(catInterface.check() == true){
+      if(catInterface.type == currentSound){
+        catInterface.S0 = homeSounds[0];
+      }
+      catInterface.S0.play();
 
-  if(catInterface.check() == true){
-    if(catInterface.type == currentSound){
-      catInterface.S0 = homeSounds[0];
+    }else if(dogInterface.check() == true){
+      if(dogInterface.type == currentSound){
+        dogInterface.S0 = homeSounds[1];
+      }
+      dogInterface.S0.play();
+
+    }else if(birdInterface.check() == true){
+      if(birdInterface.type == currentSound){
+        birdInterface.S0 = homeSounds[2];
+      }
+      birdInterface.S0.play();
     }
-  }else if(dogInterface.check() == true){
-    if(dogInterface.type == currentSound){
-      dogInterface.S0 = homeSounds[1];
-    }
-  }else if(birdInterface.check() == true){
-    if(birdInterface.type == currentSound){
-      birdInterface.S0 = homeSounds[2];
-    }
-  }else if(pigInterface.check() == true){
-    if(pigInterface.type == currentSound){
-      pigInterface.S0 = homeSounds[3];
-    }
-  }else if(cowInterface.check() == true){
-    if(cowInterface.type == currentSound){
-      cowInterface.S0 = homeSounds[4];
-    }
-  }else if(chickenInterface.check() == true){
-    if(chickenInterface.type == currentSound){
-      chickenInterface.S0 = homeSounds[5];
-    }
-  }else if(frogInterface.check() == true){
-    if(frogInterface.type == currentSound){
-      frogInterface.S0 = homeSounds[6];
-    }
-  }else if(grasshopperInterface.check() == true){
-    if(grasshopperInterface.type == currentSound){
-      grasshopperInterface.S0 = homeSounds[7];
-    }
+  }else if(currentPage == 3){
+    if(pigInterface.check() == true){
+        if(pigInterface.type == currentSound){
+          pigInterface.S0 = homeSounds[3];
+        }
+        pigInterface.S0.play();
+
+      }else if(cowInterface.check() == true){
+        if(cowInterface.type == currentSound){
+          cowInterface.S0 = homeSounds[4];
+        }
+        cowInterface.S0.play();
+
+      }else if(chickenInterface.check() == true){
+        if(chickenInterface.type == currentSound){
+          chickenInterface.S0 = homeSounds[5];
+        }
+        chickenInterface.S0.play();
+
+      }
+  }else if(currentPage == 4){
+    if(frogInterface.check() == true){
+        if(frogInterface.type == currentSound){
+          frogInterface.S0 = homeSounds[6];
+        }
+        frogInterface.S0.play();
+
+      }else if(grasshopperInterface.check() == true){
+        if(grasshopperInterface.type == currentSound){
+          grasshopperInterface.S0 = homeSounds[7];
+        }
+        grasshopperInterface.S0.play();
+
+      }
   }
-
-
-
-
-
 
 }
 
@@ -574,7 +593,6 @@ class interfaces{
 
   check(){
     if(mouseX > this.x && mouseX < (this.x + this.width) && mouseY > this.y && mouseY < (this.y + this.height)){
-        this.S0.play();
         return true;
       }else{
       return false;
